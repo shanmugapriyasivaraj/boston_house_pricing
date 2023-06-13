@@ -1,1 +1,267 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boston House Price</title>
+    <link rel="stylesheet" href="./home.css" />
+  </head>
+  <body>
+    <h1 class="heading">
+      Boston House Price Prediction -
+      <span class="lin_heading">Linear Regression</span>
+    </h1>
+
+    <div class="bg">
+      <div class="form_bg">
+        <form class="form_class" action="{{ url_for('predict')}}" method="post">
+          <br />
+          <br />
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Crim :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="crim"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">Zn : </label>
+              <input
+                class="input_class"
+                type="text"
+                name="zn"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Indus :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="indus"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">Chas :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="chas"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Nox :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="nox"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">RM :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="rm"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Age :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="age"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">Dis :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="dis"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Rad :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="rad"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">Tax :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="tax"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Ptratio :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="ptratio"
+                placeholder=""
+                required="required"
+              />
+            </div>
+
+            <div class="in_class">
+              <label class="label_class">Black :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="black"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+
+          <br />
+          <div class="main_div">
+            <div class="in_class">
+              <label class="label_class">Lstat :</label>
+              <input
+                class="input_class"
+                type="text"
+                name="lstat"
+                placeholder=""
+                required="required"
+              />
+            </div>
+          </div>
+          <br />
+          <br />
+          <center>
+            <button class="sub_btn" type="submit">Predict</button>
+            <br />
+            <div class="pred_text">{{prediction_text}}</div>
+          </center>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* .container {
+      justify-content: center;
+      align-items: center;
+    } */
+    .heading {
+      background-color: teal;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5px;
+      color: white;
+      font-size: 25px;
+    }
+    .lin_heading {
+      font-size: 17px;
+    }
+    /* .form_class {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    } */
+    .label_class {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+    }
+    .input_class {
+      height: 30px;
+    }
+    .in_class {
+      display: flex;
+      gap: 20px;
+    }
+    .sub_btn {
+      height: 50px;
+      width: 15%;
+      font-size: 24px;
+      padding: 7px;
+      background-color: teal;
+      color: white;
+    }
+    .main_div {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sub_btn:hover {
+      cursor: pointer;
+    }
+    .bg {
+      width: 100%;
+      height: 94vh;
+      background: linear-gradient(
+          to bottom right,
+          rgba(0, 0, 0, 0.85),
+          rgba(0, 0, 0, 0.85)
+        ),
+        url("https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=")
+          top center;
+      background-size: cover;
+      position: relative;
+    }
+    .pred_text {
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</html>
