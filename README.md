@@ -1,3 +1,1 @@
-### Boston House Pricing Prediction
-
-### Software and Tools Requirements
+### Boston House Pricing Prediction - Linear Regression Model
